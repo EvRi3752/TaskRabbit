@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Habbit {
     int frequency;
     int countStreak;
