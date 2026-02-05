@@ -28,6 +28,27 @@ public class TaskManager {
         return new ArrayList<>(tasks);
     }
 
+    public List<Habit> getAllHabits(){
+        return tasks.stream()
+        .filter(t-> t instanceof Habit)
+        .map(t-> (Habit) t)
+        .collect(Collectors.toList()); 
+    }
+
+    public Frequency getFrequency(){
+        return frequency;
+    }
+
+    public int getCountStreak(){
+        return countStreak; 
+    }
+
+    @Override
+    public String toString(){
+        return super.toString() +
+                String.format(", Frequency: %s, Streak: %d", frequency, countStreak);
+    }
+
     // Search method
 
     public List<Task> searchByTitle(String keyword){
@@ -39,6 +60,48 @@ public class TaskManager {
         return tasks.stream()
                  .filter(t -> t.getTitle().toLowerCase().contains(lower))
                  .collect(Collectors.toList()); 
+    }
+
+    public Task getTaskById(int id){
+        return tasks.stream()
+        .filter(t -> t.getId() == id)
+        .findFirst()
+        .orElse(null); 
+    }
+
+    // Task marking
+    public boolean markTaskCompleted(int id){
+        Task t = getTaskById(id); 
+        if(t == null) return false; 
+        t.markCompleted();
+        return true;
+    }
+
+    public boolean markTaskIncomplete(int id){
+        Task t = getTaskById(id);
+        if (t == null) return false; 
+        t.markIncomplete();
+        return true; 
+    }
+
+    // Streaks
+
+    public boolean incrementHabitStreak(int id){
+        Task t = getTaskById(id);
+        if (t instanceof Habit habit){
+            habit.incrementStreak();
+            return true;
+        }
+        return false; 
+    }
+
+    public boolean resetHabitStreak(int id) {
+        Task t = getTaskById(id);
+        if (t instanceof Habit habit){
+            habit.resetStreak();
+            return true;
+        }
+        return false; 
     }
 
     
