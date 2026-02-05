@@ -1,11 +1,10 @@
-import java.util.ArrayList;
 
 public class Task {
-    int id;
-    String title;
-    String desc;
-    int dueDate;
-    boolean isCompleted;
+    private int id;
+    private String title;
+    private String desc;
+    private int dueDate;
+    private boolean isCompleted;
 
     public Task(int id, String title, String desc, int dueDate, boolean isCompleted) {
         this.id = id;
@@ -16,24 +15,34 @@ public class Task {
     }
 
     public String toString() { // toString method converts variables into a string when printed
-        return String.format("ID: %s, Title: %d, Desc: %s, DueDate: %s, isCompleted: %s", id, title, desc, dueDate,
+        return String.format("ID: %s, Title: %s, Desc: %s, DueDate: %s, isCompleted: %s", id, title, desc, dueDate,
                 isCompleted);
     }
 
-    public boolean markCompleted() {
-        if (isCompleted == true) {
-            return true;
-        } else {
-            return false;
-        }
+    public void markCompleted() {
+        this.isCompleted = true;
     }
 
-    public boolean markIncomplete() {
-        if (isCompleted == false) {
-            return true;
-        } else {
-            return false;
-        }
+    public void markIncomplete() {
+        this.isCompleted = false;
+    }
+
+    // Retreival methods
+
+    public int getId(){
+        return id;
+    }
+
+    public String getTitle(){
+        return title; 
+    }
+
+    public String getDesc(){
+        return desc; 
+    }
+
+    public boolean isCompleted(){
+        return isCompleted; 
     }
 
 }
