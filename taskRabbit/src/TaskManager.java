@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors; 
+import java.util.stream.Collectors;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class TaskManager {
     
@@ -33,20 +36,6 @@ public class TaskManager {
         .filter(t-> t instanceof Habit)
         .map(t-> (Habit) t)
         .collect(Collectors.toList()); 
-    }
-
-    public Frequency getFrequency(){
-        return frequency;
-    }
-
-    public int getCountStreak(){
-        return countStreak; 
-    }
-
-    @Override
-    public String toString(){
-        return super.toString() +
-                String.format(", Frequency: %s, Streak: %d", frequency, countStreak);
     }
 
     // Search method

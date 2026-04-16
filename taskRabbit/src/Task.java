@@ -1,12 +1,15 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Task {
     private int id;
     private String title;
     private String desc;
-    private int dueDate;
+    private LocalDate dueDate;
     private boolean isCompleted;
 
-    public Task(int id, String title, String desc, int dueDate, boolean isCompleted) {
+    public Task(int id, String title, String desc, LocalDate dueDate, boolean isCompleted) {
         this.id = id;
         this.title = title;
         this.desc = desc;
@@ -27,7 +30,7 @@ public class Task {
         this.isCompleted = false;
     }
 
-    // Retreival methods
+    // Getter methods
 
     public int getId(){
         return id;

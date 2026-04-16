@@ -17,4 +17,18 @@ public class Habit extends Task {
         countStreak = 0; 
     }
 
+    // Getter methods
+    public Frequency getFrequency(){
+        return frequency;
+    }
+
+    public int getCountStreak(){
+        return countStreak;
+    }
+
+    public String toString(){
+        return super.toString() +
+                String.format(", Frequency: %s, Streak: %d", frequency, countStreak);
+    }
+
 }
